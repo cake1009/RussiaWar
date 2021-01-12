@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sum10.escape">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/russiawar_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/russiawar_icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <!-- 로고화면 -->
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 메인(테마리스트)화면 -->
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:excludeFromRecents="true"
+            android:taskAffinity="" />
+        <activity
+            android:name=".ThemeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:excludeFromRecents="true"
+            android:taskAffinity="" />
+        <activity
+            android:name=".ManageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:excludeFromRecents="true"
+            android:taskAffinity="" />
+        <activity
+            android:name=".Manage2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:excludeFromRecents="true"
+            android:taskAffinity="" />
+    </application>
+
+</manifest>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_mainsetting"
+        android:title="관리자 설정"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_resetpw"
+        android:title="비밀번호 초기화"
+        app:showAsAction="never"
+        />
+</menu>
