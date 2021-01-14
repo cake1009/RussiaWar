@@ -23,19 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/image3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#222222"
-        android:padding="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="5"
-        app:srcCompat="@android:color/background_dark" />
-
     <Button
         android:id="@+id/hintbutton"
         android:layout_width="0dp"
@@ -168,6 +155,55 @@
         app:layout_constraintTop_toBottomOf="@+id/answerbutton"
         app:layout_constraintVertical_weight="2" />
 
+    <TextView
+        android:id="@+id/answertext"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="#b7b7b7"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#282828"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/answerbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@+id/answerbutton"
+        app:layout_constraintTop_toTopOf="@+id/answerbutton"
+        app:layout_constraintVertical_weight="1" />
+
+    <TextView
+        android:id="@+id/hintcount"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border"
+        android:backgroundTint="#111111"
+        android:gravity="center"
+        android:text="사용 힌트 수 : 0 / 5"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/startbutton"
+        app:layout_constraintEnd_toEndOf="@+id/startbutton"
+        app:layout_constraintStart_toStartOf="@+id/startbutton"
+        app:layout_constraintTop_toTopOf="@+id/timer"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_weight="1" />
+
+    <ImageView
+        android:id="@+id/image3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.2"
+        android:background="#222222"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="5"
+        app:srcCompat="@android:color/background_dark" />
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="0dp"
@@ -199,41 +235,6 @@
         app:layout_constraintTop_toTopOf="@+id/image"
         app:layout_constraintVertical_weight="3"
         app:srcCompat="@android:color/transparent" />
-
-    <TextView
-        android:id="@+id/hintcount"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/border"
-        android:backgroundTint="#111111"
-        android:gravity="center"
-        android:text="사용 힌트 수 : 0 / 5"
-        android:textColor="#ffffff"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/startbutton"
-        app:layout_constraintEnd_toEndOf="@+id/startbutton"
-        app:layout_constraintStart_toStartOf="@+id/startbutton"
-        app:layout_constraintTop_toTopOf="@+id/timer"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_weight="1" />
-
-    <TextView
-        android:id="@+id/answertext"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="#b7b7b7"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#282828"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/answerbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toEndOf="@+id/answerbutton"
-        app:layout_constraintTop_toTopOf="@+id/answerbutton"
-        app:layout_constraintVertical_weight="1" />
 
     <TextView
         android:id="@+id/titletext"

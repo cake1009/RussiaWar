@@ -462,7 +462,6 @@ public class ThemeActivity extends AppCompatActivity {
         else
             hint_image2.setImageBitmap(rotate(bitmap, exifDegree)); //이미지와 각도를 가져와 표시
     }
-    //
 
     private int exifOrientationToDegrees(int exifOrientation) { //이미지의 절대경로(각도)를 가져옴
         if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90)
