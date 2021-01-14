@@ -122,13 +122,13 @@
         android:id="@+id/themeimage2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_gravity="center"
+        android:layout_gravity="bottom"
         android:layout_margin="20dp"
         android:alpha="0.2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/russiawar_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/themelist"
+        app:srcCompat="@drawable/russiawar_logo3" />
 
 </android.support.constraint.ConstraintLayout>
