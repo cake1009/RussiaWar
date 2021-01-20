@@ -32,10 +32,10 @@
     <TextView
         android:id="@+id/dummytext2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:background="#111111"
         android:gravity="center_horizontal"
-        android:text="주인공이 될 수 있는 테마방"
+        android:text=""
         android:textColor="#fffff0"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/themelist"
@@ -48,10 +48,8 @@
         android:id="@+id/themetext"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:background="#222222"
         android:gravity="center_vertical"
         android:padding="20dp"
@@ -63,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/themeimage2" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -72,9 +70,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="#222222"
-        app:layout_constraintBottom_toTopOf="@+id/themetext"
+        app:layout_constraintVertical_weight="4"
+        app:layout_constraintBottom_toTopOf="@+id/themeimage2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/themelist">
@@ -83,8 +82,8 @@
             android:id="@+id/themeimage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
             android:layout_gravity="center"
+            android:layout_margin="20dp"
             app:srcCompat="@android:color/transparent" />
 
     </FrameLayout>
@@ -109,9 +108,9 @@
         android:layout_height="wrap_content"
         android:background="#111111"
         android:gravity="center"
-        android:text="ROOMS"
+        android:text="러시아워 1호점"
         android:textColor="#fffff0"
-        android:textSize="50sp"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/dummytext2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,11 +123,12 @@
         android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:layout_margin="20dp"
-        android:alpha="0.2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/themelist"
-        app:srcCompat="@drawable/russiawar_logo3" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_weight="1"
+        app:srcCompat="@drawable/russiawar_logo2" />
 
 </android.support.constraint.ConstraintLayout>
