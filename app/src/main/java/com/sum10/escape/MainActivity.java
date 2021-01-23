@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner theme_list;
     private DBHelper dbHelper;
     private String theme;
+    private String themetime;
     private String uri;
     private String password;
 
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 theme = theme_list.getItemAtPosition(position).toString(); // 테마 이름을 theme 변수에 저장
                 theme_text.setText(dbHelper.selectText(theme)); // DB에서 선택된 테마의 설명을 가져와 텍스트뷰에 뿌림
+                themetime = dbHelper.selectTime(theme);
                 uri = (dbHelper.selectImg(theme)); // DB에서 선택된 테마의 이미지 링크를 가져와 uri 변수에 저장
                 Log.d("URITAG", uri);
                 theme_image.setImageBitmap(null);
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         if (password.equals(pw_text.getText().toString())) { // 입력한 비밀번호와 현재 preference에 저장된 비밀번호 비교
                             Intent intent = new Intent(MainActivity.this, ThemeActivity.class);// 테마페이지로 이동할 때 가져갈 데이터(이름, 힌트 등)에 필요한 인텐트 선언
                             intent.putExtra("theme", theme); // 테마 이름을 다음 화면으로 가져가기 위한 코드
+                            intent.putExtra("themetime", themetime);
                             startActivity(intent); // 다음 화면 시작
                         } else
                             Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();

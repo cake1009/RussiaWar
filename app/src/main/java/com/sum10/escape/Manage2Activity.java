@@ -30,8 +30,10 @@ public class Manage2Activity extends AppCompatActivity {
     private final int REQUEST_PERMISSION_CODE = 2222; //퍼미션 요청 코드
     private String themename;
     private String explain;
+    private String themetime;
     private String uri = null;
     private EditText themename_text;
+    private EditText time_text;
     private EditText explain_text;
     private ImageView theme_img;
 
@@ -43,6 +45,7 @@ public class Manage2Activity extends AppCompatActivity {
         themename_text = findViewById(R.id.nametext);
         explain_text = findViewById(R.id.explaintext);
         theme_img = findViewById(R.id.themeimg);
+        time_text = findViewById(R.id.timetext);
         Button add_img = findViewById(R.id.insertimg);
         Button add_theme = findViewById(R.id.addtheme);
         Button delete_theme = findViewById(R.id.deletetheme);
@@ -55,7 +58,8 @@ public class Manage2Activity extends AppCompatActivity {
             public void onClick(View view) {
                 themename = themename_text.getText().toString();
                 explain = explain_text.getText().toString();
-                dbHelper.insertTheme(themename, uri, explain); //데이터베이스에 저장
+                themetime = time_text.getText().toString();
+                dbHelper.insertTheme(themename, uri, explain, themetime); //데이터베이스에 저장
                 Toast.makeText(getApplicationContext(), "테마가 저장되었습니다. 앱을 재시작해주세요.", Toast.LENGTH_LONG).show();
                 finish();
             }

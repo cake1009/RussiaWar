@@ -35,12 +35,14 @@ import android.widget.Toast;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.IOException;
+import java.util.Vector;
 
 public class ThemeActivity extends AppCompatActivity {
 
     private int currentApiVersion;
     private SharedPreferences preferences;
     private String theme;
+    private String themetime;
     private long timer = 3600000;
     private CountDownTimer countDownTimer;
     private String hintcode = null;
@@ -50,6 +52,7 @@ public class ThemeActivity extends AppCompatActivity {
     private String imageuri = "-";
     private String imageuri2 = "-";
     private String answer = "-";
+    private Vector<String> usedhintlist = new Vector<>();
     private int count;
     private int maxcount;
     private boolean language = false;
@@ -73,6 +76,7 @@ public class ThemeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent(); // 인텐트 선언, 초기화
         theme = intent.getStringExtra("theme"); // 테마선택화면에서 테마 이름을 가져와 theme 문자열에 저장
+        themetime = intent.getStringExtra("themetime");
         setTitle(""); // 타이틀을 theme 문자열로 설정
         setContentView(R.layout.activity_theme);
         currentApiVersion = android.os.Build.VERSION.SDK_INT;
@@ -104,6 +108,7 @@ public class ThemeActivity extends AppCompatActivity {
         hintcount_text.setText("사용 힌트 수 :  " + count + " / " + maxcount);
         hint1_button.setEnabled(false);
         hint2_button.setEnabled(false);
+        timer_text.setText(themetime);
 
         uri = (dbHelper.selectImg(theme)); // DB에서 선택된 테마의 이미지 링크를 가져와 uri 변수에 저장
         Log.d("URITAG", uri);
@@ -131,8 +136,10 @@ public class ThemeActivity extends AppCompatActivity {
                         //hint_text.setText(hint); // 힌트 설명을 텍스트뷰에 뿌림
                         hint1_button.setEnabled(true);
                         hint2_button.setEnabled(true);
-                        count++; //힌트를 사용할 때마다 count가 올라감
-
+                        if (!usedhintlist.contains(hintcode)) {
+                            usedhintlist.add(hintcode);
+                            count++; //힌트를 사용할 때마다 count가 올라감
+                        }
                         hintcount_text.setText("사용 힌트 수 :  " + count + " / " + maxcount);
                         Toast.makeText(getApplicationContext(), "힌트 코드 사용! 버튼을 눌러 확인하세요.", Toast.LENGTH_LONG).show();
                         imm.hideSoftInputFromWindow(code_text.getWindowToken(), 0);
@@ -179,8 +186,8 @@ public class ThemeActivity extends AppCompatActivity {
                 //answer = dbHelper.getAnswer(theme, hintcode); // 현재 뿌려진 힌트 설명에 맞는 정답을 가져옴
                 hintcode = null;
                 hint_text.setText(""); // 정답이 보여지면 힌트는 필요없기 떄문에 날림
-                hint_image.setImageResource(0); // 이미지도 같이 날림
-                hint_image2.setImageResource(0); // 이미지도 같이 날림
+                //hint_image.setImageResource(0); // 이미지도 같이 날림
+                //hint_image2.setImageResource(0); // 이미지도 같이 날림
 
                 if (!answer.equals("-")) {
                     //count++; // 정답을 사용해도 count가 올라감
@@ -223,28 +230,6 @@ public class ThemeActivity extends AppCompatActivity {
                     countDownTimer();
                     countDownTimer.start(); // 타이머 시작
                     start_button.setText("탈출");
-                    /*final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;*/
-
-                    // This work only for android 4.4+
-                    /*if (currentApiVersion >= Build.VERSION_CODES.KITKAT) {
-
-                        getWindow().getDecorView().setSystemUiVisibility(flags);
-
-                        final View decorView = getWindow().getDecorView();
-                        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-                            @Override
-                            public void onSystemUiVisibilityChange(int visibility) {
-                                if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
-                                    decorView.setSystemUiVisibility(flags);
-                                }
-                            }
-                        });
-                    }*/
                 }
             }
         });
@@ -291,14 +276,14 @@ public class ThemeActivity extends AppCompatActivity {
     public void updateTimer() {
         int minute = (int) timer / 60000;
         int seconds = (int) timer % 60000 / 1000;
-        String timeleftText;
+        String timeLeftText;
 
-        timeleftText = "" + minute;
-        timeleftText += ":";
-        if (seconds < 10) timeleftText += "0";
-        timeleftText += seconds;
+        timeLeftText = "" + minute;
+        timeLeftText += ":";
+        if (seconds < 10) timeLeftText += "0";
+        timeLeftText += seconds;
 
-        timer_text.setText(timeleftText);
+        timer_text.setText(timeLeftText);
     }
 
     public void countDownTimer() {

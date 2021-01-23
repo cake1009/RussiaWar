@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         database.execSQL("CREATE TABLE THEME (_id INTEGER PRIMARY KEY AUTOINCREMENT, themename TEXT, hintcode INTEGER, hint TEXT, answer TEXT, hinturi TEXT, hinturi2 TEXT);");
-        database.execSQL("CREATE TABLE THEMELIST (_id INTEGER PRIMARY KEY AUTOINCREMENT, themename TEXT, themeuri TEXT, themetext TEXT);");
+        database.execSQL("CREATE TABLE THEMELIST (_id INTEGER PRIMARY KEY AUTOINCREMENT, themename TEXT, themeuri TEXT, themetext TEXT, themetime TEXT);");
     }
 
     @Override
@@ -31,9 +31,9 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
     }
 
-    public void insertTheme(String themename, String uri, String themetext) {
+    public void insertTheme(String themename, String uri, String themetext, String themetime) {
         database = getWritableDatabase();
-        database.execSQL("INSERT INTO THEMELIST VALUES(null, '" + themename + "', '" + uri + "', '" + themetext + "');");
+        database.execSQL("INSERT INTO THEMELIST VALUES(null, '" + themename + "', '" + uri + "', '" + themetext + "', '" + themetime + "');");
     }
 
     public void delete(String name, int hintcode) {
@@ -70,6 +70,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public String selectText(String themename) {
         database = getWritableDatabase();
         cursor = database.rawQuery("SELECT themetext FROM THEMELIST WHERE themename = '" + themename + "';", null);
+        if (cursor != null && cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        } else
+            return "-";
+    }
+
+    public String selectTime(String themename) {
+        database = getWritableDatabase();
+        cursor = database.rawQuery("SELECT themetime FROM THEMELIST WHERE themename = '" + themename + "';", null);
         if (cursor != null && cursor.getCount() != 0) {
             cursor.moveToFirst();
             return cursor.getString(0);
