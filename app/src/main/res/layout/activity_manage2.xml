@@ -78,6 +78,7 @@
         android:layout_marginEnd="96dp"
         android:ems="10"
         android:text="60"
+        android:hint="시간"
         android:inputType="text"
         android:textAlignment="center"
         android:textSize="24sp"
